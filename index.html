@@ -1,0 +1,1719 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم الفرنسية - أولى ثانوي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --primary-light: #4895ef;
+            --secondary: #f72585;
+            --secondary-dark: #b5179e;
+            --accent: #4cc9f0;
+            --success: #2ec4b6;
+            --warning: #ff9f1c;
+            --danger: #e71d36;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --background: #e6f2ff;
+            --card-bg: #ffffff;
+            --text: #333333;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* تصميم الشريط الجانبي */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            right: 0;
+            overflow-y: auto;
+            padding: 20px 0;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .logo i {
+            margin-left: 10px;
+            color: var(--accent);
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0 15px;
+        }
+
+        .sidebar-nav ul li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .sidebar-nav ul li a:hover::before {
+            left: 100%;
+        }
+
+        .sidebar-nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .support-sidebar {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .support-sidebar h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .support-number {
+            font-size: 1.4rem;
+            font-weight: 900;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 8px;
+            direction: ltr;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .support-info {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* المحتوى الرئيسي */
+        .main-content {
+            flex: 1;
+            margin-right: var(--sidebar-width);
+            padding: 20px;
+            max-width: calc(100% - var(--sidebar-width));
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        /* تعديلات الهيدر */
+        .header-content {
+            display: none;
+        }
+
+        /* تعديلات الهيرو */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234361ee" opacity="0.1"/><path d="M0 0L100 100" stroke="%233a0ca3" stroke-width="2" opacity="0.2"/><path d="M100 0L0 100" stroke="%233a0ca3" stroke-width="2" opacity="0.2"/></svg>');
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            color: var(--dark);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            background: var(--secondary-dark);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .cta-button i {
+            margin-right: 8px;
+        }
+
+        /* تعديلات المميزات */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            text-align: center;
+            padding: 20px 15px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: inline-block;
+            height: 70px;
+            width: 70px;
+            line-height: 70px;
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* تعديلات الدروس */
+        .lesson-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .lesson-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .lesson-card-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-card-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lesson-card-body {
+            padding: 20px;
+        }
+
+        .lesson-card-body ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .lesson-card-body ul li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .lesson-card-body ul li:hover {
+            background: #f9f9f9;
+            padding-right: 5px;
+        }
+
+        .lesson-card-body ul li i {
+            margin-left: 10px;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .lesson-card-body ul li span {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-left: 5px;
+        }
+
+        .test-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .test-button:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تحسينات واجهة الاختبارات */
+        .quiz-section {
+            padding: 30px 0;
+            display: none;
+        }
+
+        .quiz-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            margin: 0 auto;
+            max-width: 800px;
+            animation: fadeIn 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .quiz-title {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .quiz-description {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .quiz-progress {
+            height: 14px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-light), var(--primary));
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(
+                -45deg, 
+                rgba(255, 255, 255, 0.2) 25%, 
+                transparent 25%, 
+                transparent 50%, 
+                rgba(255, 255, 255, 0.2) 50%, 
+                rgba(255, 255, 255, 0.2) 75%, 
+                transparent 75%, 
+                transparent
+            );
+            z-index: 1;
+            background-size: 20px 20px;
+            animation: move 1s linear infinite;
+            border-radius: 10px;
+        }
+
+        @keyframes move {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 0; }
+        }
+
+        .quiz-progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            color: var(--dark);
+            font-weight: 700;
+            text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .question {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            line-height: 1.4;
+            padding: 15px;
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: 10px;
+            border-right: 4px solid var(--primary);
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            padding: 18px 20px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+            border-color: var(--primary-light);
+        }
+
+        .option.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+        }
+
+        .option.correct {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .option.incorrect {
+            background: var(--danger);
+            color: white;
+            border-color: var(--danger);
+        }
+
+        .option-prefix {
+            margin-left: 15px;
+            font-weight: 700;
+            background: rgba(0, 0, 0, 0.1);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .option.selected .option-prefix,
+        .option.correct .option-prefix,
+        .option.incorrect .option-prefix {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(67, 97, 238, 0.2);
+        }
+
+        .nav-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .nav-button i {
+            margin-right: 8px;
+        }
+
+        .quiz-timer {
+            background: var(--light);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .quiz-timer.warning {
+            background: #fff3cd;
+            color: #856404;
+            border-color: #ffeaa7;
+        }
+
+        .quiz-timer.danger {
+            background: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+            animation: pulse 0.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .quiz-timer i {
+            margin-left: 8px;
+            color: var(--secondary);
+        }
+
+        /* نتائج الاختبار */
+        .results-container {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 40px auto;
+            max-width: 800px;
+            animation: fadeIn 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .results-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--success), var(--accent), var(--primary));
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .results-title {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .results-score {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 20px 0;
+            position: relative;
+            display: inline-block;
+        }
+
+        .results-score::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .results-message {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            color: var(--dark);
+        }
+
+        .results-details {
+            margin-bottom: 30px;
+            text-align: right;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border: 1px solid #e9ecef;
+        }
+
+        .results-details h3 {
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .results-details ul {
+            list-style: none;
+        }
+
+        .results-details ul li {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .results-details ul li:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .results-details ul li:last-child {
+            border-bottom: none;
+        }
+
+        .results-details ul li.correct {
+            color: var(--success);
+            background: rgba(46, 196, 182, 0.1);
+        }
+
+        .results-details ul li.incorrect {
+            color: var(--danger);
+            background: rgba(231, 29, 54, 0.1);
+        }
+
+        .results-details ul li i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+
+        .results-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .action-button {
+            padding: 15px 35px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+        }
+
+        .action-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-button.secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .action-button.secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .action-button i {
+            margin-right: 8px;
+        }
+
+        /* التذييل */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-radius: var(--border-radius);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            margin: 0 8px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.85rem;
+        }
+
+        /* تحسينات للشاشات الصغيرة */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 230px;
+            }
+            
+            .main-content {
+                margin-right: 230px;
+                max-width: calc(100% - 230px);
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                margin-bottom: 20px;
+            }
+            
+            .main-content {
+                margin-right: 0;
+                max-width: 100%;
+            }
+            
+            .logo {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .features-grid, .lesson-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .quiz-container, .results-container {
+                padding: 20px;
+            }
+            
+            .question {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+            }
+            
+            .quiz-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .quiz-timer {
+                order: -1;
+            }
+            
+            .results-score {
+                font-size: 2.8rem;
+            }
+            
+            .results-message {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .feature-icon {
+                font-size: 2rem;
+                height: 60px;
+                width: 60px;
+                line-height: 60px;
+            }
+            
+            .lesson-card-header h3 {
+                font-size: 1.2rem;
+            }
+            
+            .quiz-title {
+                font-size: 1.5rem;
+            }
+            
+            .results-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* إضافة زر القائمة للشاشات الصغيرة */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1001;
+            background: var(--primary);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .sidebar.active {
+                display: block;
+            }
+        }
+
+        /* الأنيميشنات والأدوات المساعدة */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+        
+        .mt-20 {
+            margin-top: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- زر القائمة للجوال -->
+    <div class="mobile-menu-btn" id="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- الشريط الجانبي -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>تعلم الفرنسية</span>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="#lessons">الدروس</a></li>
+                <li><a href="#tests">الاختبارات</a></li>
+                <li><a href="#support">الدعم</a></li>
+            </ul>
+        </nav>
+        
+        <div class="support-sidebar">
+            <h3>دعم وتعليمات</h3>
+            <div class="support-number">+966 59 571 0239</div>
+            <p class="support-info">رقم الدعم متاح من الساعة 8 صباحاً حتى 8 مساءً</p>
+        </div>
+    </aside>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <!-- قسم الهيرو -->
+        <section id="home" class="hero">
+            <h1>أولى ثانوي</h1>
+            <p>موقع متكامل لتعلم اللغة الفرنسية للصف الأول الثانوي مع اختبارات تفاعلية لقياس مستوى فهمك للدروس</p>
+            <div class="cta-buttons">
+                <a href="#lessons" class="cta-button">
+                    <i class="fas fa-book"></i> ابدأ التعلم الآن
+                </a>
+                <a href="#tests" class="cta-button secondary">
+                    <i class="fas fa-question-circle"></i> اختبر معرفتك
+                </a>
+            </div>
+        </section>
+
+        <!-- قسم المميزات -->
+        <section id="features" class="section">
+            <h2 class="section-title">مميزات موقعنا</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>دروس شاملة</h3>
+                    <p>دروس مفصلة تشمل كل ما تحتاجه لتعلم اللغة الفرنسية من الصفر</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>اختبارات تفاعلية</h3>
+                    <p>اختبر معرفتك باختبارات تفاعلية مع تصحيح فوري وتقييم شامل</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>تتبع التقدم</h3>
+                    <p>تتبع تقدمك في التعلم ومعرفة نقاط القوة والضعف لديك</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>تصميم متجاوب</h3>
+                    <p>تصميم يعمل على جميع الأجهزة من هواتف وحواسيب وأجهزة لوحية</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الدروس -->
+        <section id="lessons" class="section">
+            <h2 class="section-title">الدروس المتاحة</h2>
+            <div class="lesson-cards">
+                <div class="lesson-card">
+                    <div class="lesson-card-header">
+                        <h3>الدرس الأول: الأسماء المذكرية</h3>
+                    </div>
+                    <div class="lesson-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span>un garçon</span> - ولد</li>
+                            <li><i class="fas fa-check"></i> <span>un lycée</span> - مدرسة ثانوية</li>
+                            <li><i class="fas fa-check"></i> <span>un lycéen</span> - طالب ثانوي</li>
+                            <li><i class="fas fa-check"></i> <span>un jeu</span> - لعبة</li>
+                            <li><i class="fas fa-check"></i> <span>un professeur</span> - مدرس</li>
+                            <li><i class="fas fa-check"></i> <span>un élève</span> - تلميذ</li>
+                        </ul>
+                        <button class="test-button" onclick="startQuiz(1)">
+                            <i class="fas fa-play-circle"></i> ابدأ اختبار الدرس
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-card-header">
+                        <h3>الدرس الثاني: أسماء أخرى</h3>
+                    </div>
+                    <div class="lesson-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span>un copain</span> - رفيق/صاحب</li>
+                            <li><i class="fas fa-check"></i> <span>un cybercopain</span> - صديق على النت</li>
+                            <li><i class="fas fa-check"></i> <span>un camarade</span> - زميل</li>
+                            <li><i class="fas fa-check"></i> <span>un voisin</span> - جار</li>
+                            <li><i class="fas fa-check"></i> <span>un ami</span> - صديق</li>
+                            <li><i class="fas fa-check"></i> <span>un sport</span> - رياضة</li>
+                        </ul>
+                        <button class="test-button" onclick="startQuiz(2)">
+                            <i class="fas fa-play-circle"></i> ابدأ اختبار الدرس
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="lesson-card">
+                    <div class="lesson-card-header">
+                        <h3>الدرس الثالث: مصطلحات إضافية</h3>
+                    </div>
+                    <div class="lesson-card-body">
+                        <ul>
+                            <li><i class="fas fa-check"></i> <span>un caractère</span> - شخصية</li>
+                            <li><i class="fas fa-check"></i> <span>un défaut</span> - عيب</li>
+                            <li><i class="fas fa-check"></i> <span>un jumeau</span> - توأm</li>
+                            <li><i class="fas fa-check"></i> <span>un tableau</span> - جدول/لوح</li>
+                            <li><i class="fas fa-check"></i> <span>un mail</span> - بريد إلكتروني</li>
+                            <li><i class="fas fa-check"></i> <span>un quartier</span> - حي</li>
+                        </ul>
+                        <button class="test-button" onclick="startQuiz(3)">
+                            <i class="fas fa-play-circle"></i> ابدأ اختبار الدرس
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الاختبارات -->
+        <section id="tests" class="quiz-section">
+            <div class="quiz-container" id="quiz-container">
+                <div class="quiz-header">
+                    <h2 class="quiz-title" id="quiz-title">اختبار الدرس الأول: الأسماء المذكرية</h2>
+                    <p class="quiz-description">اختر الإجابة الصحيحة لكل سؤال</p>
+                </div>
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quiz-progress"></div>
+                    <div class="quiz-progress-text" id="quiz-progress-text">1/10</div>
+                </div>
+                <div class="question" id="question"></div>
+                <div class="options" id="options"></div>
+                <div class="quiz-navigation">
+                    <button class="nav-button" id="prev-button" onclick="prevQuestion()">
+                        <i class="fas fa-arrow-right"></i> السابق
+                    </button>
+                    <div class="quiz-timer" id="quiz-timer">
+                        <i class="fas fa-clock"></i> <span id="timer">02:00</span>
+                    </div>
+                    <button class="nav-button" id="next-button" onclick="nextQuestion()">
+                        التالي <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="results-container" class="results-container">
+                <h2 class="results-title">نتيجة الاختبار</h2>
+                <div class="results-score" id="results-score"></div>
+                <div class="results-message" id="results-message"></div>
+                <div class="results-details">
+                    <h3>تفاصيل الإجابات</h3>
+                    <ul id="results-list"></ul>
+                </div>
+                <div class="results-actions">
+                    <button class="action-button" onclick="restartQuiz()">
+                        <i class="fas fa-redo"></i> إعادة الاختبار
+                    </button>
+                    <button class="action-button secondary" onclick="backToLessons()">
+                        <i class="fas fa-book"></i> العودة إلى الدروس
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الدعم -->
+        <section id="support" class="section">
+            <h2 class="section-title">الدعم الفني</h2>
+            <p>إذا كنت بحاجة إلى مساعدة أو لديك استفسار، لا تتردد في التواصل معنا على الرقم التالي:</p>
+            <div class="support-number">+966 59 571 0239</div>
+            <p class="support-info">رقم الدعم متاح من الساعة 8 صباحاً حتى 8 مساءً</p>
+        </section>
+
+        <!-- التذييل -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">تعلم الفرنسية</div>
+                <div class="footer-links">
+                    <a href="#home">الرئيسية</a>
+                    <a href="#features">المميزات</a>
+                    <a href="#lessons">الدروس</a>
+                    <a href="#tests">الاختبارات</a>
+                    <a href="#support">الدعم</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="copyright">© 2025 موقع تعلم الفرنسية لأولى ثانوي. جميع الحقوق محفوظة.</div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // كود الجافاسكريبت الأصلي يبقى كما هو مع إضافة وظيفة القائمة للجوال
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+
+        // إخفاء القائمة عند النقر على رابط في القائمة (للجوال)
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('active');
+                }
+            });
+        });
+
+        // بيانات الأسئلة لكل درس
+        const quizzes = {
+            1: {
+                title: "الدرس الأول: الأسماء المذكرية",
+                questions: [
+                    {
+                        question: "ما معنى كلمة 'un garçon'؟",
+                        options: ["ولد", "مدرسة", "معلم", "طالب"],
+                        answer: 0
+                    },
+                    {
+                        question: "ما ترجمة 'مدرسة ثانوية' إلى الفرنسية؟",
+                        options: ["un garçon", "un lycée", "un professeur", "un élève"],
+                        answer: 1
+                    },
+                    {
+                        question: "كيف تقول 'طالب ثانوي' بالفرنسية؟",
+                        options: ["un lycée", "un jeu", "un lycéen", "un garçon"],
+                        answer: 2
+                    },
+                    {
+                        question: "ما معنى 'un jeu'؟",
+                        options: ["لعبة", "درس", "كتاب", "قلم"],
+                        answer: 0
+                    },
+                    {
+                        question: "ما ترجمة 'مدرس' إلى الفرنسية؟",
+                        options: ["un élève", "un garçon", "un professeur", "un lycée"],
+                        answer: 2
+                    },
+                    {
+                        question: "كيف تقول 'تلميذ' بالفرنسية؟",
+                        options: ["un garçon", "un professeur", "un élève", "un jeu"],
+                        answer: 2
+                    },
+                    {
+                        question: "ما معنى 'un copain'؟",
+                        options: ["جار", "صديق", "زميل", "قريب"],
+                        answer: 1
+                    },
+                    {
+                        question: "ما ترجمة 'صديق على النت' إلى الفرنسية؟",
+                        options: ["un cybercopain", "un camarade", "un voisin", "un ami"],
+                        answer: 0
+                    },
+                    {
+                        question: "كيف تقول 'زميل' بالفرنسية؟",
+                        options: ["un copain", "un cybercopain", "un camarade", "un ami"],
+                        answer: 2
+                    },
+                    {
+                        question: "ما معنى 'un voisin'؟",
+                        options: ["صديق", "جار", "قريب", "زميل"],
+                        answer: 1
+                    }
+                ]
+            },
+            2: {
+                title: "الدرس الثاني: أسماء أخرى",
+                questions: [
+                    {
+                        question: "ما معنى 'un sport'؟",
+                        options: ["لعبة", "رياضة", "نشاط", "تمارين"],
+                        answer: 1
+                    },
+                    {
+                        question: "ما ترجمة 'رياضة' إلى الفرنسية؟",
+                        options: ["un jeu", "un sport", "un camarade", "un ami"],
+                        answer: 1
+                    },
+                    {
+                        question: "كيف تقول 'صديق' بالفرنسية؟",
+                        options: ["un copain", "un ami", "un voisin", "un camarade"],
+                        answer: 1
+                    },
+                    {
+                        question: "ما معنى 'un prénom'؟",
+                        options: ["اسم العائلة", "اللقب", "الاسم الأول", "الكنية"],
+                        answer: 2
+                    },
+                    {
+                        question: "ما ترجمة 'الاسم الأول' إلى الفرنسية؟",
+                        options: ["un nom", "un prénom", "un âge", "un frère"],
+                        answer: 1
+                    },
+                    {
+                        question: "كيف تقول 'عمر' بالفرنسية؟",
+                        options: ["un an", "un nom", "un âge", "un frère"],
+                        answer: 2
+                    },
+                    {
+                        question: "ما معنى 'un frère'؟",
+                        options: ["أخت", "أخ", "أب", "أم"],
+                        answer: 1
+                    },
+                    {
+                        question: "ما ترجمة 'أخ' إلى الفرنسية？",
+                        options: ["un frère", "un nom", "un âge", "un prénom"],
+                        answer: 0
+                    },
+                    {
+                        question: "كيف تقول 'نادي الصف' بالفرنسية？",
+                        options: ["le Club de classe", "un sport", "un camarade", "un cybercopain"],
+                        answer: 0
+                    },
+                    {
+                        question: "ما معنى 'le Club de classe'？",
+                        options: ["نادي الرياضة", "نادي الصف", "نادي اللغة", "نادي الثقافة"],
+                        answer: 1
+                    }
+                ]
+            },
+            3: {
+                title: "الدرس الثالث: مصطلحات إضافية",
+                questions: [
+                    {
+                        question: "ما معنى 'un caractère'？",
+                        options: ["عيب", "شخصية", "جدول", "حي"],
+                        answer: 1
+                    },
+                    {
+                        question: "ما ترجمة 'شخصية' إلى الفرنسية？",
+                        options: ["un défaut", "un caractère", "un jumeau", "un tableau"],
+                        answer: 1
+                    },
+                    {
+                        question: "كيف تقول 'عيب' بالفرنسية？",
+                        options: ["un caractère", "un défaut", "un jumeau", "un tableau"],
+                        answer: 1
+                    },
+                    {
+                        question: "ما معنى 'un jumeau'？",
+                        options: ["شقيق", "توأم", "صديق", "قريب"],
+                        answer: 1
+                    },
+                    {
+                        question: "ما ترجمة 'توأم' إلى الفرنسية？",
+                        options: ["un jumeau", "un tableau", "un mail", "un quartier"],
+                        answer: 0
+                    },
+                    {
+                        question: "كيف تقول 'جدول' بالفرنسية？",
+                        options: ["un défaut", "un jumeau", "un tableau", "un mail"],
+                        answer: 2
+                    },
+                    {
+                        question: "ما معنى 'un mail'？",
+                        options: ["رسالة", "بريد إلكتروني", "هاتف", "محادثة"],
+                        answer: 1
+                    },
+                    {
+                        question: "ما ترجمة 'بريد إلكتروني' إلى الفرنسية？",
+                        options: ["un tableau", "un quartier", "un mail", "un dessin"],
+                        answer: 2
+                    },
+                    {
+                        question: "كيف تقول 'حي' بالفرنسية？",
+                        options: ["un quartier", "un dessin", "un ordre", "un service"],
+                        answer: 0
+                    },
+                    {
+                        question: "ما معنى 'un quartier'？",
+                        options: ["منزل", "مدينة", "حي", "شارع"],
+                        answer: 2
+                    }
+                ]
+            }
+        };
+
+        let currentQuiz = 1;
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let quizScore = 0;
+        let timerInterval;
+        let timeLeft = 120; // 2 دقائق لكل اختبار
+
+        function startQuiz(quizNumber) {
+            currentQuiz = quizNumber;
+            currentQuestion = 0;
+            userAnswers = [];
+            quizScore = 0;
+            timeLeft = 120;
+            
+            document.getElementById('quiz-title').textContent = quizzes[quizNumber].title;
+            document.getElementById('lessons').style.display = 'none';
+            document.getElementById('tests').style.display = 'block';
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('results-container').style.display = 'none';
+            
+            showQuestion();
+            updateProgress();
+            startTimer();
+            
+            // Scroll to quiz section
+            document.getElementById('tests').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showQuestion() {
+            const questionData = quizzes[currentQuiz].questions[currentQuestion];
+            document.getElementById('question').textContent = questionData.question;
+            
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            const optionLetters = ['أ', 'ب', 'ج', 'د'];
+            
+            questionData.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionElement.classList.add('selected');
+                }
+                
+                const optionPrefix = document.createElement('div');
+                optionPrefix.className = 'option-prefix';
+                optionPrefix.textContent = optionLetters[index];
+                
+                const optionText = document.createElement('div');
+                optionText.className = 'option-text';
+                optionText.textContent = option;
+                
+                optionElement.appendChild(optionPrefix);
+                optionElement.appendChild(optionText);
+                
+                optionElement.onclick = () => selectOption(index);
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            document.getElementById('prev-button').disabled = currentQuestion === 0;
+            document.getElementById('next-button').textContent = 
+                currentQuestion === quizzes[currentQuiz].questions.length - 1 ? 'إنهاء الاختبار' : 'التالي';
+                
+            document.getElementById('quiz-progress-text').textContent = 
+                `${currentQuestion + 1}/${quizzes[currentQuiz].questions.length}`;
+        }
+
+    function selectOption(optionIndex) {
+    userAnswers[currentQuestion] = optionIndex;
+    showQuestion();
+
+    // الانتقال فورًا للسؤال التالي أو إنهاء الاختبار
+    if (currentQuestion < quizzes[currentQuiz].questions.length - 1) {
+        nextQuestion();
+    } else {
+        finishQuiz();
+    }
+}
+
+
+
+        function nextQuestion() {
+            if (currentQuestion < quizzes[currentQuiz].questions.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                finishQuiz();
+            }
+            updateProgress();
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / quizzes[currentQuiz].questions.length) * 100;
+            document.getElementById('quiz-progress').style.width = `${progress}%`;
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    finishQuiz();
+                }
+            }, 1000);
+        }
+        
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+            // تغيير لون المؤقت عندما يقل الوقت
+            const timerElement = document.getElementById('quiz-timer');
+            timerElement.classList.remove('warning', 'danger');
+            
+            if (timeLeft < 30) {
+                timerElement.classList.add('warning');
+            }
+            
+            if (timeLeft < 10) {
+                timerElement.classList.add('danger');
+            }
+        }
+
+        function finishQuiz() {
+            clearInterval(timerInterval);
+            
+            // حساب النتيجة
+            quizScore = 0;
+            const resultsList = document.getElementById('results-list');
+            resultsList.innerHTML = '';
+            
+            quizzes[currentQuiz].questions.forEach((question, index) => {
+                const listItem = document.createElement('li');
+                
+                if (userAnswers[index] === question.answer) {
+                    quizScore++;
+                    listItem.className = 'correct';
+                    listItem.innerHTML = `
+                        <div>
+                            <i class="fas fa-check-circle"></i> 
+                            ${question.question}
+                        </div>
+                        <div>إجابتك صحيحة: ${question.options[question.answer]}</div>
+                    `;
+                } else {
+                    listItem.className = 'incorrect';
+                    listItem.innerHTML = `
+                        <div>
+                            <i class="fas fa-times-circle"></i> 
+                            ${question.question}
+                        </div>
+                        <div>إجابتك: ${question.options[userAnswers[index]]}</div>
+                        <div>الإجابة الصحيحة: ${question.options[question.answer]}</div>
+                    `;
+                }
+                
+                resultsList.appendChild(listItem);
+            });
+            
+            document.getElementById('results-score').textContent = `${quizScore} / ${quizzes[currentQuiz].questions.length}`;
+            
+            let message = '';
+            const percentage = (quizScore / quizzes[currentQuiz].questions.length) * 100;
+            
+            if (percentage >= 90) {
+                message = 'ممتاز! أحسنت العمل';
+            } else if (percentage >= 70) {
+                message = 'جيد جداً! أداء رائع';
+            } else if (percentage >= 50) {
+                message = 'ليس سيئاً، لكن يمكنك التحسن أكثر';
+            } else {
+                message = 'تحتاج إلى مزيد من الممارسة والدراسة';
+            }
+            document.getElementById('results-message').textContent = message;
+            
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'block';
+        }
+
+        function restartQuiz() {
+            startQuiz(currentQuiz);
+        }
+
+        function backToLessons() {
+            document.getElementById('results-container').style.display = 'none';
+            document.getElementById('tests').style.display = 'none';
+            document.getElementById('lessons').style.display = 'block';
+            
+            // Scroll to lessons section
+            document.getElementById('lessons').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // إظهار الدروس أولاً وإخفاء الاختبار عند التحميل
+        window.onload = function() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'none';
+            document.getElementById('tests').style.display = 'none';
+            
+            // إضافة تأثيرات عند التمرير
+            window.addEventListener('scroll', revealOnScroll);
+            
+            function revealOnScroll() {
+                const elements = document.querySelectorAll('.feature-card, .lesson-card');
+                const windowHeight = window.innerHeight;
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // تهيئة العناصر لإضافات التمرير
+            document.querySelectorAll('.feature-card, .lesson-card').forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(50px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // تشغيل مرة أولى عند التحميل
+            revealOnScroll();
+        }
+    </script>
+</body>
+</html>
