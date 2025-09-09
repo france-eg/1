@@ -1612,6 +1612,8 @@
         }
 
 function finishQuiz(force = false) {
+     console.log("✅ دخلنا finishQuiz"); // debug
+
     // لو مش force نمنع التسليم لو فيه أسئلة غير مجابة أو اختار "لم تجب"
     if (!force) {
         const unansweredIndex = quizzes[currentQuiz].questions.findIndex((q, i) => {
@@ -1677,6 +1679,8 @@ function finishQuiz(force = false) {
   document.getElementById('results-message').innerHTML = 
     `👏 أحسنت يا <b style="color:var(--secondary)">${studentName}</b> <br>${message}`;
     sendResultToGoogleSheet(studentName, quizScore, quizzes[currentQuiz].questions.length);
+    console.log("➡️ جاري إرسال النتيجة:", studentName, quizScore);
+
 
 
     // منع التفاعل بعد التسليم: نعطّل النقر على الخيارات
