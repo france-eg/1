@@ -1771,7 +1771,7 @@ function checkNameBeforeQuiz() {
 
 // إرسال النتيجة إلى Google Sheets
 function sendResultToGoogleSheet(name, score, total) {
-    fetch("https://script.google.com/macros/s/AKfycbzJKwfGbLEsD5GaQtMfBZGuhAJa2w8MHEedpq3fL35OAsqRHi7wl7aaHifwW_Egxd3gIw/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbz_qkSyeUF8xkHndvwXPGYUhyw6Hba0p2f1jSYVwnR5ZtVDqEQFBWJsm91OhSuo4td9eg/exec", {
         method: "POST",
         body: JSON.stringify({
             name: name,
