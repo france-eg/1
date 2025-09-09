@@ -1074,6 +1074,39 @@
         .visible {
             display: block;
         }
+        /* 🔹 خانة الاسم كزرار كبير */
+.name-input {
+    margin: 20px auto;
+    max-width: 320px;
+}
+
+.name-input input {
+    width: 100%;
+    padding: 14px 25px;
+    border-radius: 50px;
+    border: 2px solid var(--primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    background: var(--secondary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: var(--transition);
+    cursor: text;
+}
+
+.name-input input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: normal;
+}
+
+.name-input input:focus {
+    outline: none;
+    background: var(--secondary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
     </style>
 </head>
 <body>
@@ -1112,13 +1145,20 @@
         <section id="home" class="hero">
             <h1>أولى ثانوي</h1>
             <p>موقع متكامل لتعلم اللغة الفرنسية للصف الأول الثانوي مع اختبارات تفاعلية لقياس مستوى فهمك للدروس</p>
+            <!-- خانة الاسم -->
+<div class="name-input">
+    <i class="fas fa-user"></i>
+    <input type="text" id="student-name" placeholder="✍️ اكتب اسمك هنا">
+</div>
+
             <div class="cta-buttons">
                 <a href="#lessons" class="cta-button">
                     <i class="fas fa-book"></i> ابدأ التعلم الآن
                 </a>
-                <a href="#tests" class="cta-button secondary">
-                    <i class="fas fa-question-circle"></i> اختبر معرفتك
-                </a>
+                <a href="#tests" class="cta-button secondary" onclick="checkNameBeforeQuiz(event)">
+    <i class="fas fa-question-circle"></i> اختبر معرفتك
+</a>
+
             </div>
         </section>
  </section>
@@ -1430,26 +1470,35 @@
         let timerInterval;
         let timeLeft = 120; // 2 دقائق لكل اختبار
 
-        function startQuiz(quizNumber) {
-            currentQuiz = quizNumber;
-            currentQuestion = 0;
-            userAnswers = [];
-            quizScore = 0;
-            timeLeft = 120;
-            
-            document.getElementById('quiz-title').textContent = quizzes[quizNumber].title;
-            document.getElementById('lessons').style.display = 'none';
-            document.getElementById('tests').style.display = 'block';
-            document.getElementById('quiz-container').style.display = 'block';
-            document.getElementById('results-container').style.display = 'none';
-            
-            showQuestion();
-            updateProgress();
-            startTimer();
-            
-            // Scroll to quiz section
-            document.getElementById('tests').scrollIntoView({ behavior: 'smooth' });
-        }
+    function startQuiz(quizNumber) {
+    const input = document.getElementById("student-name");
+    studentName = input ? input.value.trim() : studentName;
+
+    if (!studentName) {
+        alert("⚠️ من فضلك اكتب اسمك أولاً قبل البدء في الاختبار.");
+        if (input) input.focus();
+        return; // يوقف تشغيل الاختبار
+    }
+
+    currentQuiz = quizNumber;
+    currentQuestion = 0;
+    userAnswers = [];
+    quizScore = 0;
+    timeLeft = 120;
+    
+    document.getElementById('quiz-title').textContent = quizzes[quizNumber].title;
+    document.getElementById('lessons').style.display = 'none';
+    document.getElementById('tests').style.display = 'block';
+    document.getElementById('quiz-container').style.display = 'block';
+    document.getElementById('results-container').style.display = 'none';
+    
+    showQuestion();
+    updateProgress();
+    startTimer();
+    
+    document.getElementById('tests').scrollIntoView({ behavior: 'smooth' });
+}
+
 
         function showQuestion() {
             const questionData = quizzes[currentQuiz].questions[currentQuestion];
@@ -1625,7 +1674,10 @@ function finishQuiz(force = false) {
     } else {
         message = '📚 تحتاج إلى مزيد من الممارسة والدراسة';
     }
-    document.getElementById('results-message').textContent = message;
+  document.getElementById('results-message').innerHTML = 
+    `👏 أحسنت يا <b style="color:var(--secondary)">${studentName}</b> <br>${message}`;
+    sendResultToGoogleSheet(studentName, quizScore, quizzes[currentQuiz].questions.length);
+
 
     // منع التفاعل بعد التسليم: نعطّل النقر على الخيارات
     document.getElementById('options').querySelectorAll('.option').forEach(opt => {
@@ -1694,6 +1746,83 @@ function finishQuiz(force = false) {
             // تشغيل مرة أولى عند التحميل
             revealOnScroll();
         }
-    </script>
+let studentName = "";
+
+// التحقق من الاسم قبل بدء الاختبار
+function checkNameBeforeQuiz() {
+    const input = document.getElementById("student-name");
+    studentName = input.value.trim();
+
+    if (!studentName) {
+        alert("⚠️ من فضلك اكتب اسمك أولاً قبل البدء في الاختبار.");
+        input.focus();
+        return false;
+    }
+
+    // 👇 بدلاً من فتح الاختبار مباشرة، نوديه لقسم الدروس
+    document.getElementById('lessons').scrollIntoView({ behavior: 'smooth' });
+
+    return true;
+}
+
+// إرسال النتيجة إلى Google Sheets
+function sendResultToGoogleSheet(name, score, total) {
+    fetch("https://script.google.com/macros/s/AKfycbzJKwfGbLEsD5GaQtMfBZGuhAJa2w8MHEedpq3fL35OAsqRHi7wl7aaHifwW_Egxd3gIw/exec", {
+        method: "POST",
+        body: JSON.stringify({
+            name: name,
+            score: score,
+            total: total,
+            time: new Date().toLocaleString()
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.text())
+    .then(data => console.log("📊 النتيجة اتحفظت:", data))
+    .catch(err => console.error("❌ خطأ في الحفظ:", err));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
 </body>
 </html>
