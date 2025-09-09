@@ -1771,7 +1771,8 @@ function checkNameBeforeQuiz() {
 
 // إرسال النتيجة إلى Google Sheets
 function sendResultToGoogleSheet(name, score, total) {
-    fetch("https://script.google.com/macros/s/AKfycbz_qkSyeUF8xkHndvwXPGYUhyw6Hba0p2f1jSYVwnR5ZtVDqEQFBWJsm91OhSuo4td9eg/exec", {
+    fetch("https://sheetdb.io/api/v1/tiizw9csgvwq5", {
+
         method: "POST",
         body: JSON.stringify({
             name: name,
