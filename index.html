@@ -3,7 +3,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-<!-- تحسين الظهور في البحث (SEO) -->
+    <!-- تحسين الظهور في البحث (SEO) -->
 <meta name="description" content="موقع متكامل لتعلم اللغة الفرنسية للصف الأول الثانوي: دروس، كلمات، جرامير، امتحانات إلكترونية تفاعلية بالإجابات.">
 <meta name="keywords" content="فرنساوي أولى ثانوي, امتحانات فرنساوي أولى ثانوي, تدريبات فرنساوي أولى ثانوي, أسئلة فرنساوي بالإجابات, شرح دروس فرنساوي أولى ثانوي, امتحان فرنساوي تفاعلي, بنك أسئلة فرنساوي, مراجعة فرنساوي للصف الأول الثانوي, تعلم اللغة الفرنسية للثانوي, امتحانات الكترونية فرنساوي, موقع تعليم فرنساوي للطلاب, دروس فرنساوي بالعربي, حل امتحانات فرنساوي, كلمات فرنساوي مهمة, جرامير فرنساوي أولى ثانوي, اختبارات الكترونية فرنساوي, مراجعة نهائية فرنساوي, نماذج امتحانات فرنساوي, فرنساوي الصف الأول الثانوي, examen francais 1ere secondaire, cours francais premiere secondaire, exercices francais 1ere secondaire, vocabulaire francais lycee, grammaire francais 1ere annee secondaire, test francais interactif, revision francais lycee, questions reponses francais, apprendre francais secondaire, evaluation francais premiere secondaire">
 <meta name="author" content="تعلم الفرنسية - أولى ثانوي">
@@ -20,7 +20,6 @@
 <meta name="twitter:title" content="تعلم الفرنسية - أولى ثانوي">
 <meta name="twitter:description" content="دروس تفاعلية واختبارات إلكترونية لصف أولى ثانوي فرنساوي.">
 <meta name="twitter:image" content="https://france-eg.github.io/1/cover.jpg">
-
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تعلم الفرنسية - أولى ثانوي</title>
@@ -1188,7 +1187,7 @@
             <div class="lesson-cards">
                 <div class="lesson-card">
                     <div class="lesson-card-header">
-                        <h3>الدرس الأول: تقديم النفس</h3>
+                        <h3>Examen de français 1</h3>
                     </div>
                     <div class="lesson-card-body">
                         <button class="test-button" onclick="startQuiz(1)">
@@ -1199,7 +1198,7 @@
                 
                 <div class="lesson-card">
                     <div class="lesson-card-header">
-                        <h3>الدرس الثاني: تقديم وتحديد هويه الاصدقاء</h3>
+                        <h3>Examen de français 2</h3>
                     </div>
                     <div class="lesson-card-body">
                        
@@ -1211,7 +1210,7 @@
                 
                 <div class="lesson-card">
                     <div class="lesson-card-header">
-                        <h3>الدرس الثالث: الحديث عن السمات الشخصيه</h3>
+                        <h3>Examen de français 3</h3>
                     </div>
                     <div class="lesson-card-body">
                        
@@ -1227,7 +1226,7 @@
         <section id="tests" class="quiz-section">
             <div class="quiz-container" id="quiz-container">
                 <div class="quiz-header">
-                    <h2 class="quiz-title" id="quiz-title">اختبار الدرس الأول: تقديم النفس</h2>
+                    <h2 class="quiz-title" id="quiz-title">Examen de français</h2>
                     <p class="quiz-description">اختر الإجابة الصحيحة لكل سؤال</p>
                 </div>
                 <div class="quiz-progress">
@@ -1314,173 +1313,170 @@
         });
 
         // بيانات الأسئلة لكل درس
-        const quizzes = {
-            1: {
-                title: "الدرس الاول : تقديم النفس",
-               questions: [
-                    {
-                        question: "ما معنى كلمة 'un garçon'؟",
-                        options: ["ولد", "مدرسة", "معلم", "طالب"],
-                        answer: 0
-                    },
-                    {
-                        question: "ما ترجمة 'مدرسة ثانوية' إلى الفرنسية؟",
-                        options: ["un garçon", "un lycée", "un professeur", "un élève"],
-                        answer: 1
-                    },
-                    {
-                        question: "كيف تقول 'طالب ثانوي' بالفرنسية؟",
-                        options: ["un lycée", "un jeu", "un lycéen", "un garçon"],
-                        answer: 2
-                    },
-                    {
-                        question: "ما معنى 'un jeu'؟",
-                        options: ["لعبة", "درس", "كتاب", "قلم"],
-                        answer: 0
-                    },
-                    {
-                        question: "ما ترجمة 'مدرس' إلى الفرنسية؟",
-                        options: ["un élève", "un garçon", "un professeur", "un lycée"],
-                        answer: 2
-                    },
-                    {
-                        question: "كيف تقول 'تلميذ' بالفرنسية؟",
-                        options: ["un garçon", "un professeur", "un élève", "un jeu"],
-                        answer: 2
-                    },
-                    {
-                        question: "ما معنى 'un copain'؟",
-                        options: ["جار", "صديق", "زميل", "قريب"],
-                        answer: 1
-                    },
-                    {
-                        question: "ما ترجمة 'صديق على النت' إلى الفرنسية؟",
-                        options: ["un cybercopain", "un camarade", "un voisin", "un ami"],
-                        answer: 0
-                    },
-                    {
-                        question: "كيف تقول 'زميل' بالفرنسية؟",
-                        options: ["un copain", "un cybercopain", "un camarade", "un ami"],
-                        answer: 2
-                    },
-                    {
-                        question: "ما معنى 'un voisin'؟",
-                        options: ["صديق", "جار", "قريب", "زميل"],
-                        answer: 1
-                    }
-                ]
-            },
-            2: {
-                title: "الدرس الثاني : تقديم وتحديد هويه الاصدقاء",
-                questions: [
-                    {
-                        question: "ما معنى 'un sport'؟",
-                        options: ["لعبة", "رياضة", "نشاط", "تمارين"],
-                        answer: 1
-                    },
-                    {
-                        question: "ما ترجمة 'رياضة' إلى الفرنسية؟",
-                        options: ["un jeu", "un sport", "un camarade", "un ami"],
-                        answer: 1
-                    },
-                    {
-                        question: "كيف تقول 'صديق' بالفرنسية؟",
-                        options: ["un copain", "un ami", "un voisin", "un camarade"],
-                        answer: 1
-                    },
-                    {
-                        question: "ما معنى 'un prénom'؟",
-                        options: ["اسم العائلة", "اللقب", "الاسم الأول", "الكنية"],
-                        answer: 2
-                    },
-                    {
-                        question: "ما ترجمة 'الاسم الأول' إلى الفرنسية؟",
-                        options: ["un nom", "un prénom", "un âge", "un frère"],
-                        answer: 1
-                    },
-                    {
-                        question: "كيف تقول 'عمر' بالفرنسية؟",
-                        options: ["un an", "un nom", "un âge", "un frère"],
-                        answer: 2
-                    },
-                    {
-                        question: "ما معنى 'un frère'؟",
-                        options: ["أخت", "أخ", "أب", "أم"],
-                        answer: 1
-                    },
-                    {
-                        question: "ما ترجمة 'أخ' إلى الفرنسية？",
-                        options: ["un frère", "un nom", "un âge", "un prénom"],
-                        answer: 0
-                    },
-                    {
-                        question: "كيف تقول 'نادي الصف' بالفرنسية？",
-                        options: ["le Club de classe", "un sport", "un camarade", "un cybercopain"],
-                        answer: 0
-                    },
-                    {
-                        question: "ما معنى 'le Club de classe'？",
-                        options: ["نادي الرياضة", "نادي الصف", "نادي اللغة", "نادي الثقافة"],
-                        answer: 1
-                    }
-                ]
-            },
-            3: {
-                title: "الدرس الثالث : الحديث عن السمات الشخصيه",
-                questions: [
-                    {
-                        question: "ما معنى 'un caractère'？",
-                        options: ["عيب", "شخصية", "جدول", "حي"],
-                        answer: 1
-                    },
-                    {
-                        question: "ما ترجمة 'شخصية' إلى الفرنسية？",
-                        options: ["un défaut", "un caractère", "un jumeau", "un tableau"],
-                        answer: 1
-                    },
-                    {
-                        question: "كيف تقول 'عيب' بالفرنسية？",
-                        options: ["un caractère", "un défaut", "un jumeau", "un tableau"],
-                        answer: 1
-                    },
-                    {
-                        question: "ما معنى 'un jumeau'？",
-                        options: ["شقيق", "توأم", "صديق", "قريب"],
-                        answer: 1
-                    },
-                    {
-                        question: "ما ترجمة 'توأم' إلى الفرنسية？",
-                        options: ["un jumeau", "un tableau", "un mail", "un quartier"],
-                        answer: 0
-                    },
-                    {
-                        question: "كيف تقول 'جدول' بالفرنسية？",
-                        options: ["un défaut", "un jumeau", "un tableau", "un mail"],
-                        answer: 2
-                    },
-                    {
-                        question: "ما معنى 'un mail'？",
-                        options: ["رسالة", "بريد إلكتروني", "هاتف", "محادثة"],
-                        answer: 1
-                    },
-                    {
-                        question: "ما ترجمة 'بريد إلكتروني' إلى الفرنسية？",
-                        options: ["un tableau", "un quartier", "un mail", "un dessin"],
-                        answer: 2
-                    },
-                    {
-                        question: "كيف تقول 'حي' بالفرنسية？",
-                        options: ["un quartier", "un dessin", "un ordre", "un service"],
-                        answer: 0
-                    },
-                    {
-                        question: "ما معنى 'un quartier'？",
-                        options: ["منزل", "مدينة", "حي", "شارع"],
-                        answer: 2
-                    }
-                ]
-            }
-        };
+       const quizzes = {
+  1: {
+    title: "Examen de français ",   // ← اسم الامتحان
+    questions: [
+      {
+        question: "........ ai 15 ans.",
+        options: ["J'", "Elle", "Tu", "Il"],
+        answer: 0
+      },
+      {
+        question: "Sami et moi, ........ avons 16 ans.",
+        options: ["nous", "vous", "ils", "elles"],
+        answer: 0
+      },
+      {
+        question: "........ s'appellent Marc et Camille.",
+        options: ["Elles", "Ils", "Il", "Elle"],
+        answer: 1
+      },
+      {
+        question: "........ m'appelle Rami.",
+        options: ["Elles", "Je", "Il", "Vous"],
+        answer: 1
+      },
+      {
+        question: "........ t'appelles comment ?",
+        options: ["Je", "Tu", "Il", "Nous"],
+        answer: 1
+      },
+      {
+        question: "........ nous appelons Bassem et Mazen.",
+        options: ["Ils", "Elles", "Elle", "Nous"],
+        answer: 3
+      },
+      {
+        question: "........ s'appelle Rami.",
+        options: ["Il", "Elles", "Elle", "Tu"],
+        answer: 0
+      },
+      {
+        question: "Mathilde et toi, ........ aimez quelle couleur ?",
+        options: ["tu", "nous", "vous", "elle"],
+        answer: 2
+      }
+    ]
+  },
+
+
+
+       
+  2: {
+    title: "Examen de français 2",
+    questions: [
+      {
+        question: "........ Sophie et Nicolas.",
+        options: ["Il s'appelle", "Ils s'appellent", "Elle est", "Elles sont"],
+        answer: 1
+      },
+      {
+        question: "........ Martine !",
+        options: ["Il est", "Ce sont", "Voici", "Ça"],
+        answer: 2
+      },
+      {
+        question: "........ Céline, c'est une copine du tennis.",
+        options: ["Voici", "Ce", "Elle", "Moi"],
+        answer: 0
+      },
+      {
+        question: "........ des copines de classe.",
+        options: ["Elle est", "Ils sont", "Elles s'appellent", "Voici"],
+        answer: 3
+      },
+      {
+        question: "........ un copain du football.",
+        options: ["C'est", "Il s'appelle", "Ce sont", "Ils sont"],
+        answer: 0
+      },
+      {
+        question: "........ des voisines du quartier.",
+        options: ["Ils s'appellent", "Ce sont", "Ils se présentent", "Ils sont"],
+        answer: 1
+      },
+      {
+        question: "........ Claude, un copain de la gym.",
+        options: ["Ils s'appellent", "Elle est", "Ce sont", "Je vous présente"],
+        answer: 3
+      },
+      {
+        question: "........ madame Laura.",
+        options: ["Ça", "C'est", "Ce sont", "Elle"],
+        answer: 1
+      }
+    ]
+  },
+
+
+    
+  3: {
+    title: "Examen de français 3",
+    questions: [
+      {
+        question: "Alex et Zoé sont ...............",
+        options: ["jumeaux", "jumelle", "jumelles", "jumeau"],
+        answer: 0
+      },
+      {
+        question: "Qui ........ ce ?",
+        options: ["êtes", "es", "est", "suis"],
+        answer: 2
+      },
+      {
+        question: "Ma sœur et ma mère ........ ordonnées.",
+        options: ["êtes", "sont", "est", "sommes"],
+        answer: 1
+      },
+      {
+        question: "C'est ........ amie du lycée.",
+        options: ["un", "deux", "des", "une"],
+        answer: 3
+      },
+      {
+        question: "........ un copain de classe.",
+        options: ["Voici", "Ce", "Il", "Elle"],
+        answer: 0
+      },
+      {
+        question: "J'ai une sœur ........",
+        options: ["jumeau", "jumelles", "jumeaux", "jumelle"],
+        answer: 3
+      },
+      {
+        question: "........ sommes ordonnées.",
+        options: ["Ils", "Elles", "Nous", "Vous"],
+        answer: 2
+      },
+      {
+        question: "Je ........ présente au reste de la classe.",
+        options: ["me", "moi", "se", "tu"],
+        answer: 0
+      },
+      {
+        question: "........ est sympa, ta sœur.",
+        options: ["Il", "Elle", "Je", "Tu"],
+        answer: 1
+      },
+      {
+        question: "Mon copain est sociable, et ........ ?",
+        options: ["je", "tu", "toi", "il"],
+        answer: 2
+      }
+    ]
+  }
+}
+
+    
+  
+
+
+         
+
+  
+
+
 
         let currentQuiz = 1;
         let currentQuestion = 0;
@@ -1807,6 +1803,46 @@ function sendResultToGoogleSheet(name, score, total) {
     .then(data => console.log("📊 النتيجة اتحفظت:", data))
     .catch(err => console.error("❌ خطأ في الحفظ:", err));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
